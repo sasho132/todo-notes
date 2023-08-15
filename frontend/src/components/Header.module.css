@@ -1,0 +1,24 @@
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-wrapper {
+    display: flex;
+    width: 40%;
+    margin-top: 8rem;
+    align-items: center;
+    background-color: #aed8cc;
+    border: solid #461959 0.2rem;
+    border-radius: 0.4rem;
+}
+
+.nav-img {
+    width: 48px;
+    margin: 1rem;
+}
+
+.nav-title {
+    margin-left: 2rem;
+    color: #461959;
+}
