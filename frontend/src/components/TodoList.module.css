@@ -1,0 +1,15 @@
+.notes-body {
+    display: flex;
+    justify-content: center;
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    margin-top: 1rem;
+    border: solid #461959 0.2rem;
+    border-radius: 0.4rem;
+    padding: 2rem;
+}
