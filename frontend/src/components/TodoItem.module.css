@@ -1,1 +1,28 @@
+.note-wrapper-completed {
+    display: flex;
+    flex-direction: row;
+    justify-items: baseline;
+    justify-content: space-between;
+    background-color: #6b8f64;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
 
+.note-wrapper-uncompleted {
+    background-color: #93635c;
+    display: flex;
+    flex-direction: row;
+    justify-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 50%;
+}
