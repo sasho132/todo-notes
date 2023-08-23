@@ -14,7 +14,9 @@ const TodoItem = (props) => {
                 <p className={styles["note-status"]}>
                     {props.completed ? "Completed" : "Uncompleted"}
                 </p>
-                <button className={styles["note-button"]}>Change status</button>
+                <button className={styles["note-button"]} onClick={() => props.onClick(props)}>
+                    Change status
+                </button>
             </div>
         </div>
     );
