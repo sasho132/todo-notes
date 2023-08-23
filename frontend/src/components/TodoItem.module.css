@@ -7,6 +7,7 @@
     margin-bottom: 0.5rem;
     padding: 1rem;
     border-radius: 0.5rem;
+    align-items: center;
 }
 
 .note-wrapper-uncompleted {
@@ -18,11 +19,32 @@
     margin-bottom: 0.5rem;
     padding: 1rem;
     border-radius: 0.5rem;
+    align-items: center;
+}
+
+.note-status {
+    font-style: italic;
 }
 
 .button-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
     width: 50%;
+}
+
+.note-button {
+    border: none;
+    border-radius: 0.2rem;
+    text-align: center;
+    background-color: #ffff;
+    color: #555555;
+    padding: 0.5rem;
+    transition-duration: 0.4s;
+}
+
+.note-button:hover {
+    background-color: #555555;
+    color: #ffff;
 }
