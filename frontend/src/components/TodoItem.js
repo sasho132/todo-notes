@@ -1,20 +1,18 @@
 import styles from "./TodoItem.module.css";
 
 const TodoItem = (props) => {
-    let taskStatus = "note-wrapper-uncompleted";
+    let todoStatus = `${styles.noteWrapper}`;
     if (props.completed) {
-        taskStatus = "note-wrapper-completed";
+        todoStatus += ` ${styles.completed}`;
     }
 
     return (
-        <div className={styles[taskStatus]}>
-            <h3 className={styles["note-title"]}>{props.title}</h3>
-            {/* <p className={styles["note-desc"]}>{props.description}</p> */}
-            <div className={styles["button-wrapper"]}>
-                <p className={styles["note-status"]}>
-                    {props.completed ? "Completed" : "Uncompleted"}
-                </p>
-                <button className={styles["note-button"]} onClick={() => props.onClick(props)}>
+        <div className={todoStatus}>
+            <h3 className={styles.noteTitle}>{props.title}</h3>
+            {/* <p className={styles.noteDesc}>{props.description}</p> */}
+            <div className={styles.buttonWrapper}>
+                <p className={styles.noteStatus}>{props.completed ? "Completed" : "Incompleted"}</p>
+                <button className={styles.noteButton} onClick={() => props.onClick(props)}>
                     Change status
                 </button>
             </div>

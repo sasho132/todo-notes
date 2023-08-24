@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.nav-wrapper {
+.navWrapper {
     display: flex;
     width: 40%;
     margin-top: 8rem;
@@ -13,12 +13,12 @@
     border-radius: 0.4rem;
 }
 
-.nav-img {
+.navImg {
     width: 48px;
     margin: 1rem;
 }
 
-.nav-title {
+.navTitle {
     font-family: "Poppins", sans-serif;
     margin-left: 2rem;
     color: #461959;

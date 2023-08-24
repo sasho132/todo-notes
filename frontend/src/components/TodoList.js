@@ -30,8 +30,12 @@ const TodoList = () => {
     };
 
     return (
-        <div className={styles["notes-body"]}>
-            <div className={styles["notes-container"]}>
+        <div className={styles.notesBody}>
+            <div className={styles.notesContainer}>
+                <div className={styles.inputWrapper}>
+                    <input type="text" className={styles.input} />
+                    <button className={styles.inputButton}>Add Task</button>
+                </div>
                 {todos.map((todo) => (
                     <TodoItem key={todo.id} {...todo} onClick={statusButtonHandler} />
                 ))}

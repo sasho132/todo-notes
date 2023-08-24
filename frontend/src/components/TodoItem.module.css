@@ -1,16 +1,4 @@
-.note-wrapper-completed {
-    display: flex;
-    flex-direction: row;
-    justify-items: baseline;
-    justify-content: space-between;
-    background-color: #6b8f64;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    align-items: center;
-}
-
-.note-wrapper-uncompleted {
+.noteWrapper {
     background-color: #93635c;
     display: flex;
     flex-direction: row;
@@ -22,11 +10,15 @@
     align-items: center;
 }
 
-.note-status {
+.completed {
+    background-color: #6b8f64;
+}
+
+.noteStatus {
     font-style: italic;
 }
 
-.button-wrapper {
+.buttonWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -34,7 +26,7 @@
     width: 50%;
 }
 
-.note-button {
+.noteButton {
     border: none;
     border-radius: 0.2rem;
     text-align: center;
@@ -44,7 +36,7 @@
     transition-duration: 0.4s;
 }
 
-.note-button:hover {
+.noteButton:hover {
     background-color: #555555;
     color: #ffff;
 }

@@ -1,9 +1,9 @@
-.notes-body {
+.notesBody {
     display: flex;
     justify-content: center;
 }
 
-.notes-container {
+.notesContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,4 +13,32 @@
     border: solid #461959 0.2rem;
     border-radius: 0.4rem;
     padding: 2rem;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.input {
+    border: solid #461959 0.2rem;
+    border-radius: 0.2rem;
+    width: 70%;
+}
+
+.inputButton {
+    border: solid #461959 0.2rem;
+    border-radius: 0.2rem;
+    padding: 0.4rem 1rem;
+    background-color: #ffff;
+    transition-duration: 0.4s;
+}
+
+.inputButton:hover {
+    background-color: #555555;
+    color: #ffff;
 }
