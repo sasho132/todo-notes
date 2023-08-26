@@ -37,6 +37,7 @@ const TodoList = () => {
                         value={newTask}
                         onChange={(e) => setNewTask(e.target.value)}
                         className={styles.input}
+                        placeholder="Enter name of the new task here..."
                     />
                     <button className={styles.inputButton} onClick={addNoteHandler}>
                         Add Task

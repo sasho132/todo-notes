@@ -27,19 +27,21 @@
 
 .input {
     border: solid #040d12 0.2rem;
-    border-radius: 0.2rem;
-    width: 70%;
+    border-radius: 0.4rem;
+    width: 75%;
+    background-color: #e4ece9;
+    box-shadow: 4px 4px 4px #8d8d8d;
 }
 
 .inputButton {
     border: solid #040d12 0.2rem;
-    border-radius: 0.2rem;
+    border-radius: 0.4rem;
     padding: 0.4rem 1rem;
-    background-color: #ffff;
+    background-color: #93b1a6;
     transition-duration: 0.4s;
+    box-shadow: 4px 4px 4px #8d8d8d;
 }
 
 .inputButton:hover {
-    background-color: #555555;
-    color: #ffff;
+    background-color: #e4ece9;
 }

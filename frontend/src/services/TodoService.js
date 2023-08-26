@@ -22,7 +22,7 @@ export const fetchTodoNote = async (todo) => {
 };
 
 export const addNote = async (newTask) => {
-    const requestOption = {
+    let requestOption = {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
