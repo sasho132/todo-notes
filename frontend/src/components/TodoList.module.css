@@ -10,7 +10,8 @@
     width: 40%;
     margin-top: 1rem;
     margin-bottom: 8rem;
-    border: solid #461959 0.2rem;
+    border: solid #040d12 0.2rem;
+    background-color: #e4ece9;
     border-radius: 0.4rem;
     padding: 2rem;
 }
@@ -25,13 +26,13 @@
 }
 
 .input {
-    border: solid #461959 0.2rem;
+    border: solid #040d12 0.2rem;
     border-radius: 0.2rem;
     width: 70%;
 }
 
 .inputButton {
-    border: solid #461959 0.2rem;
+    border: solid #040d12 0.2rem;
     border-radius: 0.2rem;
     padding: 0.4rem 1rem;
     background-color: #ffff;

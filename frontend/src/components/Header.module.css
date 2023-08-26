@@ -8,8 +8,8 @@
     width: 40%;
     margin-top: 8rem;
     align-items: center;
-    background-color: #aed8cc;
-    border: solid #461959 0.2rem;
+    background-color: #93b1a6;
+    border: solid #040d12 0.2rem;
     border-radius: 0.4rem;
 }
 
@@ -21,5 +21,5 @@
 .navTitle {
     font-family: "Poppins", sans-serif;
     margin-left: 2rem;
-    color: #461959;
+    color: #040d12;
 }

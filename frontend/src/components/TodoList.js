@@ -1,5 +1,8 @@
-import TodoItem from "./TodoItem";
 import { useEffect, useState } from "react";
+
+import * as TodoService from "../services/TodoService";
+
+import TodoItem from "./TodoItem";
 import styles from "./TodoList.module.css";
 
 const TodoList = () => {
@@ -7,45 +10,21 @@ const TodoList = () => {
     const [newTask, setNewTask] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/todos/").then((res) =>
-            res.json().then((result) => {
-                setTodos(Object.values(result));
-            })
-        );
+        TodoService.getAllTodos().then((todos) => setTodos(todos));
     }, []);
 
     const statusButtonHandler = (todo) => {
-        fetch(`http://localhost:8000/api/todos/${todo.id}/`, {
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({ ...todo, completed: !todo.completed }),
-        })
-            .then((res) => res.json())
-            .then((changedTodo) => {
-                setTodos((allNotes) =>
-                    allNotes.map((x) => (x.id === changedTodo.id ? changedTodo : x))
-                );
-            });
+        TodoService.fetchTodoNote(todo).then((changedTodo) => {
+            setTodos((allNotes) =>
+                allNotes.map((x) => (x.id === changedTodo.id ? changedTodo : x))
+            );
+        });
     };
 
     const addNoteHandler = () => {
-        let requestOption = {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                title: newTask,
-                description: "",
-                completed: false,
-            }),
-        };
-
-        fetch("http://localhost:8000/api/todos/", requestOption)
-            .then((res) => res.json())
-            .then((data) => {
-                setTodos([...todos, data]);
-            });
+        TodoService.addNote(newTask).then((data) => {
+            setTodos([...todos, data]);
+        });
         setNewTask("");
     };
 

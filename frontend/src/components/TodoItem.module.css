@@ -1,17 +1,21 @@
 .noteWrapper {
-    background-color: #93635c;
     display: flex;
     flex-direction: row;
     justify-items: baseline;
     justify-content: space-between;
     margin-bottom: 0.5rem;
     padding: 1rem;
+    border: solid #040d12 0.2rem;
     border-radius: 0.5rem;
     align-items: center;
 }
 
 .completed {
     background-color: #6b8f64;
+}
+
+.completed h3 {
+    text-decoration: line-through;
 }
 
 .noteStatus {
@@ -28,15 +32,23 @@
 
 .noteButton {
     border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    /* border: none;
     border-radius: 0.2rem;
     text-align: center;
     background-color: #ffff;
     color: #555555;
     padding: 0.5rem;
-    transition-duration: 0.4s;
+    transition-duration: 0.4s; */
 }
 
-.noteButton:hover {
+/* .noteButton:hover {
     background-color: #555555;
     color: #ffff;
+} */
+
+.btnImg {
+    width: 32px;
 }
