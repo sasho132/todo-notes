@@ -37,3 +37,16 @@ export const addNote = async (newTask) => {
 
     return result;
 };
+
+export const deleteNote = async (taskId) => {
+    const response = await fetch(`${baseUrl}${taskId}/`, { method: "DELETE" });
+
+    return response;
+};
+
+export const getTodoNote = async (taskId) => {
+    const response = await fetch(`${baseUrl}${taskId}/`);
+    const result = await response.json();
+
+    return result;
+};

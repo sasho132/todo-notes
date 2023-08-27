@@ -1,6 +1,6 @@
 import styles from "./TodoItem.module.css";
 
-const TodoItem = (todo) => {
+export const TodoItem = ({ todo, changeStatusClick, deleteClick, infoClick }) => {
     let todoStatus = `${styles.noteWrapper}`;
     if (todo.completed) {
         todoStatus += ` ${styles.completed}`;
@@ -16,18 +16,16 @@ const TodoItem = (todo) => {
             <h3 className={styles.noteTitle}>{todo.title}</h3>
             <div className={styles.buttonWrapper}>
                 {/* <p className={styles.noteStatus}>{todo.completed ? "Completed" : "Uncompleted"}</p> */}
-                <button className={styles.noteButton}>
+                <button className={styles.noteButton} onClick={() => infoClick(todo.id)}>
                     <img src="/img/edit.svg" alt="check" className={styles.btnImg} />
                 </button>
-                <button className={styles.noteButton}>
+                <button className={styles.noteButton} onClick={() => deleteClick(todo.id)}>
                     <img src="/img/delete.svg" alt="delete-button" className={styles.btnImg} />
                 </button>
-                <button className={styles.noteButton} onClick={() => todo.onClick(todo)}>
+                <button className={styles.noteButton} onClick={() => changeStatusClick(todo)}>
                     <img src={statusIcon} alt="check" className={styles.btnImg} />
                 </button>
             </div>
         </div>
     );
 };
-
-export default TodoItem;

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-
 import * as TodoService from "../services/TodoService";
-
-import TodoItem from "./TodoItem";
+import { TodoItem } from "./TodoItem";
+import { TodoInfo } from "./TodoInfo";
 import styles from "./TodoList.module.css";
 
-const TodoList = () => {
+export const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const [newTask, setNewTask] = useState("");
+    const [selectedTodo, setSelectedTodo] = useState(null);
 
     useEffect(() => {
         TodoService.getAllTodos().then((todos) => setTodos(todos));
@@ -28,8 +28,25 @@ const TodoList = () => {
         setNewTask("");
     };
 
+    const deleteTaskHandler = (todoId) => {
+        TodoService.deleteNote(todoId).then(() => {
+            setTodos([...todos]);
+        });
+    };
+
+    const todoInfoHandler = (todoId) => {
+        TodoService.getTodoNote(todoId).then((data) => {
+            setSelectedTodo(data);
+        });
+    };
+
+    const infoCloseHandler = () => {
+        setSelectedTodo(null);
+    };
+
     return (
         <div className={styles.notesBody}>
+            {selectedTodo && <TodoInfo todo={selectedTodo} onClose={infoCloseHandler} />}
             <div className={styles.notesContainer}>
                 <div className={styles.inputWrapper}>
                     <input
@@ -37,18 +54,22 @@ const TodoList = () => {
                         value={newTask}
                         onChange={(e) => setNewTask(e.target.value)}
                         className={styles.input}
-                        placeholder="Enter name of the new task here..."
+                        placeholder="Add new task..."
                     />
                     <button className={styles.inputButton} onClick={addNoteHandler}>
                         Add Task
                     </button>
                 </div>
                 {todos.map((todo) => (
-                    <TodoItem key={todo.id} {...todo} onClick={statusButtonHandler} />
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        changeStatusClick={statusButtonHandler}
+                        deleteClick={deleteTaskHandler}
+                        infoClick={todoInfoHandler}
+                    />
                 ))}
             </div>
         </div>
     );
 };
-
-export default TodoList;
