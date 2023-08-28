@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import * as TodoService from "../services/TodoService";
-import { TodoItem } from "./TodoItem";
-import { TodoInfo } from "./TodoInfo";
+import * as TodoService from "../../services/TodoService";
+import { TodoItem } from "../todo-item/TodoItem";
+import { TodoInfo } from "../todo-info/TodoInfo";
 import styles from "./TodoList.module.css";
 
 export const TodoList = () => {
@@ -40,13 +40,13 @@ export const TodoList = () => {
         });
     };
 
-    const infoCloseHandler = () => {
+    const CloseHandler = () => {
         setSelectedTodo(null);
     };
 
     return (
-        <div className={styles.notesBody}>
-            {selectedTodo && <TodoInfo todo={selectedTodo} onClose={infoCloseHandler} />}
+        <div className={styles.notesBody} onClick={CloseHandler}>
+            {selectedTodo && <TodoInfo todo={selectedTodo} onClose={CloseHandler} />}
             <div className={styles.notesContainer}>
                 <div className={styles.inputWrapper}>
                     <input
