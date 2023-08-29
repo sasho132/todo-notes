@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 2rem;
-    flex-wrap: wrap;
     gap: 1rem;
     justify-content: space-between;
 }
@@ -28,7 +27,8 @@
 .input {
     border: solid #040d12 0.2rem;
     border-radius: 0.4rem;
-    width: 75%;
+    width: auto;
+    flex-grow: 1;
     background-color: #e4ece9;
     box-shadow: 4px 4px 4px #8d8d8d;
 }
@@ -42,6 +42,59 @@
     box-shadow: 4px 4px 4px #8d8d8d;
 }
 
+.inputButtonMin {
+    border: solid #040d12 0.2rem;
+    border-radius: 0.4rem;
+    padding: 0.4rem 1rem;
+    background-color: #93b1a6;
+    transition-duration: 0.4s;
+    box-shadow: 4px 4px 4px #8d8d8d;
+    display: none;
+}
+
 .inputButton:hover {
     background-color: #e4ece9;
+}
+
+@media screen and (max-width: 1380px) {
+    .inputButton {
+        display: none;
+    }
+    .inputButtonMin {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .notesContainer {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .notesContainer {
+        width: 80%;
+    }
+
+    .input {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .inputButton {
+        display: inline-block;
+    }
+    .inputButtonMin {
+        display: none;
+    }
+
+    .inputWrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .input {
+        height: 46px;
+    }
 }

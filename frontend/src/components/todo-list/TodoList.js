@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import * as TodoService from "../../services/TodoService";
 import { TodoItem } from "../todo-item/TodoItem";
 import { TodoInfo } from "../todo-info/TodoInfo";
+import { TodoDelete } from "../todo-delete/TodoDelete";
+import { TodoActions } from "./TodoListConstants";
 import styles from "./TodoList.module.css";
 
 export const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const [newTask, setNewTask] = useState("");
     const [selectedTodo, setSelectedTodo] = useState(null);
+    const [todoAction, setTodoAction] = useState(null);
 
     useEffect(() => {
         TodoService.getAllTodos().then((todos) => setTodos(todos));
     }, []);
 
     const statusButtonHandler = (todo) => {
-        TodoService.fetchTodoNote(todo).then((changedTodo) => {
+        TodoService.changeStatusTodoNote(todo).then((changedTodo) => {
             setTodos((allNotes) =>
                 allNotes.map((x) => (x.id === changedTodo.id ? changedTodo : x))
             );
@@ -29,24 +32,36 @@ export const TodoList = () => {
     };
 
     const deleteTaskHandler = (todoId) => {
-        TodoService.deleteNote(todoId).then(() => {
-            setTodos([...todos]);
+        TodoService.getTodoNote(todoId).then((data) => {
+            setSelectedTodo(data);
+            console.log(data);
+            setTodoAction(TodoActions.Delete);
         });
     };
 
     const todoInfoHandler = (todoId) => {
         TodoService.getTodoNote(todoId).then((data) => {
             setSelectedTodo(data);
+            setTodoAction(TodoActions.Info);
         });
     };
 
-    const CloseHandler = () => {
+    const closeHandler = () => {
         setSelectedTodo(null);
     };
 
     return (
-        <div className={styles.notesBody} onClick={CloseHandler}>
-            {selectedTodo && <TodoInfo todo={selectedTodo} onClose={CloseHandler} />}
+        <div className={styles.notesBody} onClick={closeHandler}>
+            {selectedTodo && todoAction === TodoActions.Info && (
+                <TodoInfo todo={selectedTodo} onClose={closeHandler} />
+            )}
+            {selectedTodo && todoAction === TodoActions.Delete && (
+                <TodoDelete
+                    todo={selectedTodo}
+                    onClose={closeHandler}
+                    onDelete={deleteTaskHandler}
+                />
+            )}
             <div className={styles.notesContainer}>
                 <div className={styles.inputWrapper}>
                     <input
@@ -58,6 +73,9 @@ export const TodoList = () => {
                     />
                     <button className={styles.inputButton} onClick={addNoteHandler}>
                         Add Task
+                    </button>
+                    <button className={styles.inputButtonMin} onClick={addNoteHandler}>
+                        +
                     </button>
                 </div>
                 {todos.map((todo) => (

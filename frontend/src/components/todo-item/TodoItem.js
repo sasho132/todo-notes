@@ -13,7 +13,7 @@ export const TodoItem = ({ todo, changeStatusClick, deleteClick, infoClick }) =>
 
     return (
         <div className={todoStatus}>
-            <h3 className={styles.noteTitle}>{todo.title}</h3>
+            <h3 className={styles.todoTitle}>{todo.title}</h3>
             <div className={styles.buttonWrapper}>
                 {/* <p className={styles.noteStatus}>{todo.completed ? "Completed" : "Uncompleted"}</p> */}
                 <button className={styles.noteButton} onClick={() => infoClick(todo.id)}>

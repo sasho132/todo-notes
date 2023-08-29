@@ -8,6 +8,12 @@
     border: solid #040d12 0.2rem;
     border-radius: 0.5rem;
     align-items: center;
+    overflow-wrap: break-word;
+}
+
+.todoTitle {
+    inline-size: 300px;
+    overflow: hidden;
 }
 
 .completed {
@@ -16,10 +22,6 @@
 
 .completed h3 {
     text-decoration: line-through;
-}
-
-.noteStatus {
-    font-style: italic;
 }
 
 .buttonWrapper {
@@ -39,4 +41,21 @@
 
 .btnImg {
     width: 28px;
+}
+
+@media screen and (max-width: 530px) {
+    .noteWrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .todoTitle {
+        inline-size: 200px;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .buttonWrapper {
+        justify-content: center;
+    }
 }

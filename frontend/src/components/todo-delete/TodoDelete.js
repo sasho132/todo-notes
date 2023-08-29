@@ -1,11 +1,11 @@
-import styles from "./TodoInfo.module.css";
+import styles from "./TodoDelete.module.css";
 
-export const TodoInfo = ({ todo, onClose }) => {
+export const TodoDelete = ({ todo, onClose, onDelete }) => {
     return (
         <>
             <section className={styles.modal}>
                 <div className={styles.headingWrapper}>
-                    <h2 className={styles.todoHeading}>Todo Info</h2>
+                    <h2 className={styles.todoHeading}>Confirm delete</h2>
                     <button className={styles.btnClose} onClick={onClose}>
                         <img src="/img/close-1.svg" alt="close" className={styles.closeModalIcon} />
                         <img
@@ -15,14 +15,17 @@ export const TodoInfo = ({ todo, onClose }) => {
                         />
                     </button>
                 </div>
-                <div>
-                    <h3>{todo.title}</h3>
-                    <p>{todo.description}</p>
-                </div>
 
-                <button className={styles.btn} onClick={onClose}>
-                    Close
-                </button>
+                <p className={styles.todoText}>Are you sure you want delete {todo.title}?</p>
+
+                <div className={styles.btnWrapper}>
+                    <button className={`${styles.btn} ${styles.btnCancel}`} onClick={onClose}>
+                        Cancel
+                    </button>
+                    <button className={`${styles.btn} ${styles.btnDelete}`} onClick={onDelete}>
+                        Delete
+                    </button>
+                </div>
             </section>
 
             <div className={styles.overlay}></div>

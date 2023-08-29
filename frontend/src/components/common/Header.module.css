@@ -6,7 +6,7 @@
 .navWrapper {
     display: flex;
     width: 40%;
-    margin-top: 8rem;
+    margin-top: 4rem;
     align-items: center;
     background-color: #93b1a6;
     border: solid #040d12 0.2rem;
@@ -22,4 +22,16 @@
     font-family: "Poppins", sans-serif;
     margin-left: 2rem;
     color: #040d12;
+}
+
+@media (max-width: 1000px) {
+    .navWrapper {
+        width: 60%;
+    }
+}
+
+@media (max-width: 680px) {
+    .navWrapper {
+        width: 80%;
+    }
 }

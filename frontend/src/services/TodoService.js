@@ -7,7 +7,14 @@ export const getAllTodos = async () => {
     return result;
 };
 
-export const fetchTodoNote = async (todo) => {
+export const getTodoNote = async (taskId) => {
+    const response = await fetch(`${baseUrl}${taskId}/`);
+    const result = await response.json();
+
+    return result;
+};
+
+export const changeStatusTodoNote = async (todo) => {
     const response = await fetch(`${baseUrl}${todo.id}/`, {
         method: "PATCH",
         headers: {
@@ -42,11 +49,4 @@ export const deleteNote = async (taskId) => {
     const response = await fetch(`${baseUrl}${taskId}/`, { method: "DELETE" });
 
     return response;
-};
-
-export const getTodoNote = async (taskId) => {
-    const response = await fetch(`${baseUrl}${taskId}/`);
-    const result = await response.json();
-
-    return result;
 };
