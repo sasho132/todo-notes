@@ -7,8 +7,8 @@ export const getAllTodos = async () => {
     return result;
 };
 
-export const getTodoNote = async (taskId) => {
-    const response = await fetch(`${baseUrl}${taskId}/`);
+export const getTodoNote = async (todoId) => {
+    const response = await fetch(`${baseUrl}${todoId}/`);
     const result = await response.json();
 
     return result;
@@ -45,8 +45,8 @@ export const addNote = async (newTask) => {
     return result;
 };
 
-export const deleteNote = async (taskId) => {
-    const response = await fetch(`${baseUrl}${taskId}/`, { method: "DELETE" });
+export const deleteNote = async (todoId) => {
+    const response = await fetch(`${baseUrl}${todoId}/`, { method: "DELETE" });
 
     return response;
 };

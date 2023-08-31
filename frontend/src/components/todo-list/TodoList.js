@@ -31,23 +31,23 @@ export const TodoList = () => {
         setNewTask("");
     };
 
-    const deleteTaskHandler = (todoId) => {
+    const userActionHandler = (todoId, actionType) => {
         TodoService.getTodoNote(todoId).then((data) => {
             setSelectedTodo(data);
-            console.log(data);
-            setTodoAction(TodoActions.Delete);
+            setTodoAction(actionType);
         });
     };
 
-    const todoInfoHandler = (todoId) => {
-        TodoService.getTodoNote(todoId).then((data) => {
-            setSelectedTodo(data);
-            setTodoAction(TodoActions.Info);
+    const deleteTodoHandler = (todoId) => {
+        TodoService.deleteNote(todoId).then(() => {
+            TodoService.getAllTodos().then((todos) => setTodos(todos));
+            setSelectedTodo(null);
         });
     };
 
     const closeHandler = () => {
         setSelectedTodo(null);
+        setTodoAction(null);
     };
 
     return (
@@ -59,9 +59,10 @@ export const TodoList = () => {
                 <TodoDelete
                     todo={selectedTodo}
                     onClose={closeHandler}
-                    onDelete={deleteTaskHandler}
+                    deleteActionClick={deleteTodoHandler}
                 />
             )}
+
             <div className={styles.notesContainer}>
                 <div className={styles.inputWrapper}>
                     <input
@@ -83,8 +84,7 @@ export const TodoList = () => {
                         key={todo.id}
                         todo={todo}
                         changeStatusClick={statusButtonHandler}
-                        deleteClick={deleteTaskHandler}
-                        infoClick={todoInfoHandler}
+                        userActionClick={userActionHandler}
                     />
                 ))}
             </div>

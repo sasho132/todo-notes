@@ -1,6 +1,6 @@
 import styles from "./TodoDelete.module.css";
 
-export const TodoDelete = ({ todo, onClose, onDelete }) => {
+export const TodoDelete = ({ todo, onClose, deleteActionClick }) => {
     return (
         <>
             <section className={styles.modal}>
@@ -22,12 +22,14 @@ export const TodoDelete = ({ todo, onClose, onDelete }) => {
                     <button className={`${styles.btn} ${styles.btnCancel}`} onClick={onClose}>
                         Cancel
                     </button>
-                    <button className={`${styles.btn} ${styles.btnDelete}`} onClick={onDelete}>
+                    <button
+                        className={`${styles.btn} ${styles.btnDelete}`}
+                        onClick={() => deleteActionClick(todo.id)}
+                        type="submit">
                         Delete
                     </button>
                 </div>
             </section>
-
             <div className={styles.overlay}></div>
         </>
     );

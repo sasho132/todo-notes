@@ -24,13 +24,13 @@
     color: #040d12;
 }
 
-@media (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
     .navWrapper {
         width: 60%;
     }
 }
 
-@media (max-width: 680px) {
+@media only screen and (max-width: 680px) {
     .navWrapper {
         width: 80%;
     }

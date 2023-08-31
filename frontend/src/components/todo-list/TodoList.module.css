@@ -56,7 +56,7 @@
     background-color: #e4ece9;
 }
 
-@media screen and (max-width: 1380px) {
+@media only screen and (max-width: 1380px) {
     .inputButton {
         display: none;
     }
@@ -65,13 +65,13 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
     .notesContainer {
         width: 60%;
     }
 }
 
-@media screen and (max-width: 680px) {
+@media only screen and (max-width: 680px) {
     .notesContainer {
         width: 80%;
     }
@@ -81,7 +81,7 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
     .inputButton {
         display: inline-block;
     }
