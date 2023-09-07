@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import * as TodoService from "../../services/TodoService";
-import { TodoItem } from "../todo-item/TodoItem";
-import { TodoInfo } from "../todo-info/TodoInfo";
-import { TodoDelete } from "../todo-delete/TodoDelete";
+import { TodoItem } from "./todo-item/TodoItem";
+import { TodoInfo } from "./todo-info/TodoInfo";
+import { TodoDelete } from "./todo-delete/TodoDelete";
 import { TodoActions } from "./TodoListConstants";
 import styles from "./TodoList.module.css";
 
