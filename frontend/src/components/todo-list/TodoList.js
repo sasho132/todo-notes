@@ -31,7 +31,7 @@ export const TodoList = () => {
         setNewTask("");
     };
 
-    const userActionHandler = (todoId, actionType) => {
+    const todoActionHandler = (todoId, actionType) => {
         TodoService.getTodoNote(todoId).then((data) => {
             setSelectedTodo(data);
             setTodoAction(actionType);
@@ -84,7 +84,7 @@ export const TodoList = () => {
                         key={todo.id}
                         todo={todo}
                         changeStatusClick={statusButtonHandler}
-                        userActionClick={userActionHandler}
+                        todoActionClick={todoActionHandler}
                     />
                 ))}
             </div>
