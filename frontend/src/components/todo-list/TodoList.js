@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import * as TodoService from "../../services/TodoService";
 import { TodoItem } from "./todo-item/TodoItem";
 import { TodoInfo } from "./todo-info/TodoInfo";
+import { TodoEdit } from "./todo-edit/TodoEdit";
 import { TodoDelete } from "./todo-delete/TodoDelete";
 import { TodoActions } from "./TodoListConstants";
 import styles from "./TodoList.module.css";
@@ -31,6 +32,11 @@ export const TodoList = () => {
         setNewTask("");
     };
 
+    const editNoteHandler = (todo, newTodoTitle) => {
+        console.log(todo);
+        console.log(newTodoTitle);
+    };
+
     const todoActionHandler = (todoId, actionType) => {
         TodoService.getTodoNote(todoId).then((data) => {
             setSelectedTodo(data);
@@ -51,16 +57,21 @@ export const TodoList = () => {
     };
 
     return (
-        <div className={styles.notesBody} onClick={closeHandler}>
+        <div className={styles.notesBody}>
             {selectedTodo && todoAction === TodoActions.Info && (
                 <TodoInfo todo={selectedTodo} onClose={closeHandler} />
             )}
+
             {selectedTodo && todoAction === TodoActions.Delete && (
                 <TodoDelete
                     todo={selectedTodo}
                     onClose={closeHandler}
                     deleteActionClick={deleteTodoHandler}
                 />
+            )}
+
+            {selectedTodo && todoAction === TodoActions.Edit && (
+                <TodoEdit todo={selectedTodo} onClose={closeHandler} onSave={editNoteHandler} />
             )}
 
             <div className={styles.notesContainer}>

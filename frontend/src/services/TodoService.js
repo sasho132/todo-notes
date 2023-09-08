@@ -45,6 +45,20 @@ export const addNote = async (newTask) => {
     return result;
 };
 
+export const editNote = async (todo, newTodoTitle) => {
+    const response = await fetch(`${baseUrl}${todo.id}/`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify({ ...todo, title: newTodoTitle }),
+    });
+
+    const result = await response.json();
+
+    return result;
+};
+
 export const deleteNote = async (todoId) => {
     const response = await fetch(`${baseUrl}${todoId}/`, { method: "DELETE" });
 
