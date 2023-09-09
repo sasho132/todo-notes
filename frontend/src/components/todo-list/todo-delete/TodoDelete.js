@@ -30,7 +30,7 @@ export const TodoDelete = ({ todo, onClose, deleteActionClick }) => {
                     </button>
                 </div>
             </section>
-            <div className={styles.overlay}></div>
+            <div className={styles.overlay} onClick={onClose}></div>
         </>
     );
 };

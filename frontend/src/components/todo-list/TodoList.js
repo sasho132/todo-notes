@@ -33,8 +33,12 @@ export const TodoList = () => {
     };
 
     const editNoteHandler = (todo, newTodoTitle) => {
-        console.log(todo);
-        console.log(newTodoTitle);
+        TodoService.editNote(todo, newTodoTitle).then((changedTodo) => {
+            setTodos((allNotes) =>
+                allNotes.map((x) => (x.id === changedTodo.id ? changedTodo : x))
+            );
+        });
+        setSelectedTodo("");
     };
 
     const todoActionHandler = (todoId, actionType) => {

@@ -25,7 +25,7 @@ export const TodoInfo = ({ todo, onClose }) => {
                 </button>
             </section>
 
-            <div className={styles.overlay}></div>
+            <div className={styles.overlay} onClick={onClose}></div>
         </>
     );
 };

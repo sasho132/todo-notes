@@ -23,24 +23,29 @@ export const TodoEdit = ({ todo, onClose, onSave }) => {
                     </button>
                 </div>
 
-                <form action="submit">
-                    <label htmlFor="todo-title">Type a new title:</label>
+                <div>
+                    <label htmlFor="todoTitle">Type a new title:</label>
                     <input
+                        id="todoTitle"
+                        name="todoTitle"
                         type="text"
                         value={inputValue}
                         onChange={handleChange}
                         placeholder={todo.title}
                     />
-                    <button className={styles.closeBtn} onClick={onClose}>
-                        Close
+                    <button className={`${styles.btn} ${styles.cancelBtn}`} onClick={onClose}>
+                        Cancel
                     </button>
-                    <button className={styles.saveBtn} onClick={() => onSave(todo, inputValue)}>
+                    <button
+                        type="submit"
+                        className={`${styles.btn} ${styles.saveBtn}`}
+                        onClick={() => onSave(todo, inputValue)}>
                         Save
                     </button>
-                </form>
+                </div>
             </section>
 
-            <div className={styles.overlay}></div>
+            <div className={styles.overlay} onClick={onClose}></div>
         </>
     );
 };
