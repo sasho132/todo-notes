@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 0.4rem;
+    gap: 2rem;
     width: 450px;
     padding: 1.3rem;
     min-height: 250px;
@@ -21,11 +21,37 @@
     justify-content: space-between;
 }
 
+.todoEditWrapper {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal label {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 1rem;
+}
+
 .modal input {
     padding: 0.7rem 1rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     font-size: 0.9em;
+    border: solid #040d12 1px;
+    border-radius: 0.4rem;
+    background-color: #e4ece9;
+    box-shadow: 4px 4px 4px #8d8d8d;
+    /* width: auto;
+    flex-grow: 1; */
+    /* margin-left: 1rem; */
+}
+
+.modal input:nth-last-child() {
+    flex: none;
 }
 
 button {
@@ -34,15 +60,26 @@ button {
     font-weight: 600;
 }
 
+.btnWrapper {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: flex-end;
+}
+
 .btn {
     display: inline-block;
-    padding: 0.8rem 1.4rem;
+    padding: 0.4rem 1.4rem;
     font-weight: 700;
-    background-color: #364832;
-    color: white;
-    border-radius: 5px;
+    color: #364832;
+    border-radius: 0.4rem;
     text-align: center;
     font-size: 1em;
+}
+
+.saveBtn {
+    background-color: #1a8755;
+    color: #ffff;
+    box-shadow: 4px 4px 4px #8d8d8d;
 }
 
 .btnClose {
