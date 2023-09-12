@@ -25,6 +25,13 @@ export const TodoList = () => {
         });
     };
 
+    const todoActionHandler = (todoId, actionType) => {
+        TodoService.getTodoNote(todoId).then((data) => {
+            setSelectedTodo(data);
+            setTodoAction(actionType);
+        });
+    };
+
     const addNoteHandler = () => {
         TodoService.addNote(newTask).then((data) => {
             setTodos([...todos, data]);
@@ -32,20 +39,13 @@ export const TodoList = () => {
         setNewTask("");
     };
 
-    const editNoteHandler = (todo, newTodoTitle) => {
-        TodoService.editNote(todo, newTodoTitle).then((changedTodo) => {
+    const editNoteHandler = (todo, newTodoTitle, newTodoStatus) => {
+        TodoService.editNote(todo, newTodoTitle, newTodoStatus).then((changedTodo) => {
             setTodos((allNotes) =>
                 allNotes.map((x) => (x.id === changedTodo.id ? changedTodo : x))
             );
         });
         setSelectedTodo("");
-    };
-
-    const todoActionHandler = (todoId, actionType) => {
-        TodoService.getTodoNote(todoId).then((data) => {
-            setSelectedTodo(data);
-            setTodoAction(actionType);
-        });
     };
 
     const deleteTodoHandler = (todoId) => {

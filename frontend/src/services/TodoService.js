@@ -45,13 +45,13 @@ export const addNote = async (newTask) => {
     return result;
 };
 
-export const editNote = async (todo, newTodoTitle) => {
+export const editNote = async (todo, newTodoTitle, newTodoStatus) => {
     const response = await fetch(`${baseUrl}${todo.id}/`, {
         method: "PATCH",
         headers: {
             "content-type": "application/json",
         },
-        body: JSON.stringify({ ...todo, title: newTodoTitle }),
+        body: JSON.stringify({ ...todo, title: newTodoTitle, completed: newTodoStatus }),
     });
 
     const result = await response.json();

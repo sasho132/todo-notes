@@ -22,37 +22,99 @@
 }
 
 .todoEditWrapper {
-    display: flex;
-    flex-basis: 100%;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.modal label {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    gap: 1rem;
+    display: grid;
 }
 
 .modal input {
-    padding: 0.7rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    font-size: 0.9em;
-    border: solid #040d12 1px;
-    border-radius: 0.4rem;
     background-color: #e4ece9;
-    box-shadow: 4px 4px 4px #8d8d8d;
-    /* width: auto;
-    flex-grow: 1; */
-    /* margin-left: 1rem; */
+    border: none;
+    border-radius: 0.4rem;
 }
 
-.modal input:nth-last-child() {
-    flex: none;
+.input {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
+
+.checkboxWrapper .tgl {
+    display: none;
+}
+.checkboxWrapper .tgl,
+.checkboxWrapper .tgl:after,
+.checkboxWrapper .tgl:before,
+.checkboxWrapper .tgl *,
+.checkboxWrapper .tgl *:after,
+.checkboxWrapper .tgl *:before,
+.checkboxWrapper .tgl + .tglBtn {
+    box-sizing: border-box;
+}
+.checkboxWrapper .tgl::-moz-selection,
+.checkboxWrapper .tgl:after::-moz-selection,
+.checkboxWrapper .tgl:before::-moz-selection,
+.checkboxWrapper .tgl *::-moz-selection,
+.checkboxWrapper .tgl *:after::-moz-selection,
+.checkboxWrapper .tgl *:before::-moz-selection,
+.checkboxWrapper .tgl + .tglBtn::-moz-selection,
+.checkboxWrapper .tgl::selection,
+.checkboxWrapper .tgl:after::selection,
+.checkboxWrapper .tgl:before::selection,
+.checkboxWrapper .tgl *::selection,
+.checkboxWrapper .tgl *:after::selection,
+.checkboxWrapper .tgl *:before::selection,
+.checkboxWrapper .tgl + .tglBtn::selection {
+    background: none;
+}
+.checkboxWrapper .tgl + .tglBtn {
+    outline: 0;
+    display: block;
+    width: 3em;
+    height: 1.5em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.checkboxWrapper .tgl + .tglBtn:after,
+.checkboxWrapper .tgl + .tglBtn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+.checkboxWrapper .tgl + .tglBtn:after {
+    left: 0;
+}
+.checkboxWrapper .tgl + .tglBtn:before {
+    display: none;
+}
+.checkboxWrapper .tgl:checked + .tglBtn:after {
+    left: 50%;
+}
+
+.checkboxWrapper .tglLight + .tglBtn {
+    /* background: #f0f0f0; */
+    background: #8d8d8d;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all 0.4s ease;
+}
+.checkboxWrapper .tglLight + .tglBtn:after {
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+.checkboxWrapper .tglLight:checked + .tglBtn {
+    background: #9fd6ae;
+}
+
+/* .checkboxInput {
+    margin-left: 0.8rem;
+} */
 
 button {
     cursor: pointer;

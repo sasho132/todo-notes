@@ -2,10 +2,21 @@ import styles from "./TodoEdit.module.css";
 import { useState } from "react";
 
 export const TodoEdit = ({ todo, onClose, onSave }) => {
-    const [inputValue, setInputValue] = useState("");
+    const [values, setValues] = useState({
+        todoTitle: "",
+        todoStatus: todo.completed,
+    });
 
     const handleChange = (event) => {
-        setInputValue(event.target.value);
+        if (event.target.type === "checkbox" && event.target.value === "on") {
+            setValues({ todoStatus: !todo.completed });
+        }
+
+        setValues((state) => ({
+            ...state,
+            [event.target.name]:
+                event.target.type === "checkbox" ? event.target.checked : event.target.value,
+        }));
     };
 
     return (
@@ -25,22 +36,30 @@ export const TodoEdit = ({ todo, onClose, onSave }) => {
 
                 <div className={styles.modalContent}>
                     <div className={styles.todoEditWrapper}>
-                        <label htmlFor="todoTitle">
-                            Type a new title:
+                        <div className={styles.input}>
+                            <label htmlFor="todoTitle">Type a new title:</label>
                             <input
                                 id="todoTitle"
                                 name="todoTitle"
                                 type="text"
-                                value={inputValue}
                                 onChange={handleChange}
                                 placeholder={todo.title}
                             />
-                        </label>
+                        </div>
 
-                        <label htmlFor="checkbox">
-                            Mark as done:
-                            <input type="checkbox" id="checkbox" name="checkbox" />
-                        </label>
+                        <div className="checkboxText">Todo status:</div>
+
+                        <div className={`${styles.input} ${styles.checkboxWrapper}`}>
+                            <input
+                                className={`${styles.tgl} ${styles.tglLight}`}
+                                id="todoStatus"
+                                name="todoStatus"
+                                type="checkbox"
+                                checked={values.todoStatus}
+                                onChange={handleChange}
+                            />
+                            <label className={styles.tglBtn} htmlFor="todoStatus" />
+                        </div>
                     </div>
 
                     <div className={styles.btnWrapper}>
@@ -50,7 +69,7 @@ export const TodoEdit = ({ todo, onClose, onSave }) => {
                         <button
                             type="submit"
                             className={`${styles.btn} ${styles.saveBtn}`}
-                            onClick={() => onSave(todo, inputValue)}>
+                            onClick={() => onSave(todo, values.todoTitle, values.todoStatus)}>
                             Save
                         </button>
                     </div>
