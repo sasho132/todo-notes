@@ -42,6 +42,7 @@
 
 .btnImg {
     width: 28px;
+    height: 28px;
 }
 
 @media screen and (max-width: 530px) {

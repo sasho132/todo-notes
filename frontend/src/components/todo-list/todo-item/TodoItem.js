@@ -7,13 +7,16 @@ export const TodoItem = ({ todo, changeStatusClick, todoActionClick }) => {
         todoStatus += ` ${styles.completed}`;
     }
 
-    let statusIcon = "/img/completed.svg";
+    let statusIcon = "/img/circle.svg";
     if (todo.completed) {
-        statusIcon = "/img/uncompleted.svg";
+        statusIcon = "/img/completed.svg";
     }
 
     return (
         <div className={todoStatus}>
+            <button className={styles.noteButton} onClick={() => changeStatusClick(todo)}>
+                <img src={statusIcon} alt="check" className={styles.btnImg} />
+            </button>
             <h3
                 className={styles.todoTitle}
                 onClick={() => todoActionClick(todo.id, TodoActions.Info)}>
@@ -29,9 +32,6 @@ export const TodoItem = ({ todo, changeStatusClick, todoActionClick }) => {
                     className={styles.noteButton}
                     onClick={() => todoActionClick(todo.id, TodoActions.Delete)}>
                     <img src="/img/delete.svg" alt="delete-button" className={styles.btnImg} />
-                </button>
-                <button className={styles.noteButton} onClick={() => changeStatusClick(todo)}>
-                    <img src={statusIcon} alt="check" className={styles.btnImg} />
                 </button>
             </div>
         </div>

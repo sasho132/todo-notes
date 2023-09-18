@@ -1,0 +1,50 @@
+services:
+    db:
+        image: postgres:16.0
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        ports:
+            - "${DB_PORT}:${DB_PORT}"
+        env_file:
+            - .env
+        environment:
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - PGPORT=${DB_PORT}
+        restart: unless-stopped
+        networks:
+            - todo-notes
+
+    web:
+        build: .
+        volumes:
+            - .:/app
+        env_file:
+            - .env
+        ports:
+            - "8000:8000"
+        restart: unless-stopped
+        depends_on:
+            - db
+        networks:
+            - todo-notes
+
+    client:
+        build: ./frontend
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./frontend:/frontend
+        restart: unless-stopped
+        depends_on:
+            - db
+        networks:
+            - todo-notes
+
+volumes:
+    postgres_data:
+
+networks:
+    todo-notes:
+        driver: bridge
