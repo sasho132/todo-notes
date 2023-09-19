@@ -85,7 +85,7 @@ export const TodoList = () => {
                         value={newTask}
                         onChange={(e) => setNewTask(e.target.value)}
                         className={styles.input}
-                        placeholder="Add new task..."
+                        placeholder="Task name..."
                     />
                     <button className={styles.inputButton} onClick={addNoteHandler}>
                         Add Task
@@ -94,6 +94,7 @@ export const TodoList = () => {
                         +
                     </button>
                 </div>
+
                 {todos.map((todo) => (
                     <TodoItem
                         key={todo.id}
