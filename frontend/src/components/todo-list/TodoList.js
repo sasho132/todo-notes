@@ -12,6 +12,15 @@ export const TodoList = () => {
     const [newTask, setNewTask] = useState("");
     const [selectedTodo, setSelectedTodo] = useState(null);
     const [todoAction, setTodoAction] = useState(null);
+    const [showAll, setShowAll] = useState("all");
+
+    let filteredTodos = todos;
+
+    if (showAll === "completed") {
+        filteredTodos = todos?.filter((x) => x.completed);
+    } else if (showAll === "incompleted") {
+        filteredTodos = todos?.filter((x) => !x.completed);
+    }
 
     useEffect(() => {
         TodoService.getAllTodos().then((todos) => setTodos(todos));
@@ -95,7 +104,19 @@ export const TodoList = () => {
                     </button>
                 </div>
 
-                {todos.map((todo) => (
+                <div className={styles.filterBtnWrapper}>
+                    <button className={styles.filterBtn} onClick={() => setShowAll("all")}>
+                        All
+                    </button>
+                    <button className={styles.filterBtn} onClick={() => setShowAll("completed")}>
+                        Completed
+                    </button>
+                    <button className={styles.filterBtn} onClick={() => setShowAll("incompleted")}>
+                        Incompleted
+                    </button>
+                </div>
+
+                {filteredTodos?.map((todo) => (
                     <TodoItem
                         key={todo.id}
                         todo={todo}
