@@ -131,14 +131,3 @@
         height: 46px;
     }
 }
-
-.filterBtn {
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    background-color: transparent;
-    border-bottom: solid transparent 0.2rem;
-}
-
-.filterBtn:hover {
-    border-bottom: solid #040d12 0.2rem;
-}

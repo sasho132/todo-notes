@@ -5,6 +5,8 @@ import { TodoInfo } from "./todo-info/TodoInfo";
 import { TodoEdit } from "./todo-edit/TodoEdit";
 import { TodoDelete } from "./todo-delete/TodoDelete";
 import { TodoActions } from "./TodoListConstants";
+import { FILTER_MAP } from "./TodoListConstants";
+import { FilterButton } from "./filter-button/FilterButton";
 import styles from "./TodoList.module.css";
 
 export const TodoList = () => {
@@ -12,15 +14,13 @@ export const TodoList = () => {
     const [newTask, setNewTask] = useState("");
     const [selectedTodo, setSelectedTodo] = useState(null);
     const [todoAction, setTodoAction] = useState(null);
-    const [showAll, setShowAll] = useState("all");
+    const [filter, setFilter] = useState("All");
 
-    let filteredTodos = todos;
+    const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-    if (showAll === "completed") {
-        filteredTodos = todos?.filter((x) => x.completed);
-    } else if (showAll === "incompleted") {
-        filteredTodos = todos?.filter((x) => !x.completed);
-    }
+    const filterList = FILTER_NAMES.map((name) => (
+        <FilterButton key={name} name={name} isPressed={name === filter} setFilter={setFilter} />
+    ));
 
     useEffect(() => {
         TodoService.getAllTodos().then((todos) => setTodos(todos));
@@ -105,7 +105,7 @@ export const TodoList = () => {
                 </div>
 
                 <div className={styles.filterBtnWrapper}>
-                    <button className={styles.filterBtn} onClick={() => setShowAll("all")}>
+                    {/* <button className={styles.filterBtn} onClick={() => setShowAll("all")}>
                         All
                     </button>
                     <button className={styles.filterBtn} onClick={() => setShowAll("completed")}>
@@ -113,10 +113,11 @@ export const TodoList = () => {
                     </button>
                     <button className={styles.filterBtn} onClick={() => setShowAll("incompleted")}>
                         Incompleted
-                    </button>
+                    </button> */}
+                    {filterList}
                 </div>
 
-                {filteredTodos?.map((todo) => (
+                {todos.filter(FILTER_MAP[filter]).map((todo) => (
                     <TodoItem
                         key={todo.id}
                         todo={todo}
